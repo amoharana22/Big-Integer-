@@ -71,7 +71,7 @@ public class BigInteger {
 	 * @return BigInteger instance that stores the input integer.
 	 * @throws IllegalArgumentException If input is incorrectly formatted
 	 */
-	public static BigInteger parse(String integer) //check for edge cases 000-12 symbols arent throwing errors;
+	public static BigInteger parse(String integer) 
 			throws IllegalArgumentException {
 
 		if(integer.isEmpty()==true) {
@@ -273,7 +273,7 @@ public class BigInteger {
 
 		DigitNode top=first.front;
 
-		// not initializing
+	
 
 		int topnum=0;
 
@@ -281,7 +281,7 @@ public class BigInteger {
 
 		while(top!=null || bottom!=null) {
 			if(top!=null) {
-				topnum=top.digit; // make this change wvweywhere 
+				topnum=top.digit; 
 			}else if(top==null) {
 				topnum=0;
 			}
@@ -437,7 +437,7 @@ public class BigInteger {
 		DigitNode digit=null;
 
 
-		//traversal lists for sustaining first full form;
+	
 
 		DigitNode onetrav=first.front;
 
@@ -566,7 +566,7 @@ public class BigInteger {
 
 
 
-		BigInteger adding=new BigInteger();  // check multiply for 98*12
+		BigInteger adding=new BigInteger();  
 
 
 		int product=0;
@@ -579,11 +579,11 @@ public class BigInteger {
 
 		DigitNode firstll=null;
 
-		//traversal lists
+		
 
 		DigitNode top=first.front;
 
-		DigitNode firstholder=top;    //change made here
+		DigitNode firstholder=top;    
 
 		DigitNode bottom=second.front;
 
