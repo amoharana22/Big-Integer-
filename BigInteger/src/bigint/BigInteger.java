@@ -83,28 +83,28 @@ public class BigInteger {
 		BigInteger ans = new BigInteger();
 		char error=integer.charAt(index);
 
-		if(Character.isAlphabetic(error)==true) { //revise this entire block of code before submitting.
+		if(Character.isAlphabetic(error)==true) { 
 			throw new IllegalArgumentException();
 		}
 
-		if(integer.charAt(index)=='-') {      // the code needs to throw IEE for when there is a digit in the front of the numbers like abc123
+		if(integer.charAt(index)=='-') {      
 			ans.negative=true;
 			index++;
-		}else if(integer.charAt(index)=='+') { // check this part again(good for now)
+		}else if(integer.charAt(index)=='+') { 
 			ans.negative=false;
 			index++;
 		}
 
-		for(int i=index; i<integer.length(); i++) {//this part
+		for(int i=index; i<integer.length(); i++) {
 
-			if(Character.isDigit(integer.charAt(i))==false) {  // recheck this part of the code 
-				throw new IllegalArgumentException("Not Valid Input"); // catch illegal arguements
+			if(Character.isDigit(integer.charAt(i))==false) {   
+				throw new IllegalArgumentException("Not Valid Input"); 
 
 			}
 			else if(integer.charAt(i) != '0') {
 
 				break;
-			}else if(index==integer.length()-1) {   //re test parse
+			}else if(index==integer.length()-1) {   
 				return ans;
 			}
 
@@ -124,8 +124,8 @@ public class BigInteger {
 
 			char ch=integer.charAt(x);
 
-			if(Character.isAlphabetic(ch)==true || integer.charAt(x)==' ') {  // maybe check this part
-				throw new IllegalArgumentException("Not Valid Input");             //catch illegal arguements 
+			if(Character.isAlphabetic(ch)==true || integer.charAt(x)==' ') {  
+				throw new IllegalArgumentException("Not Valid Input");              
 			}else if(Character.isDigit(ch)==false) {
 				throw new IllegalArgumentException();
 			}
@@ -166,7 +166,7 @@ public class BigInteger {
 	 * @param second Second big integer
 	 * @return Result big integer
 	 */
-	public static BigInteger add(BigInteger first, BigInteger second) { //recheck fro two negative numbers
+	public static BigInteger add(BigInteger first, BigInteger second) { 
 		BigInteger ans=new BigInteger();
 
 		if(first.negative==false && second.negative==false) {
@@ -210,7 +210,7 @@ public class BigInteger {
 		if((first.negative==true || second.negative==true) && (first.numDigits==second.numDigits) && first.negative!=second.negative){
 			if(onebigger(first,second)==true) {
 
-				ans=addsubtractor(first,second);  // changed 
+				ans=addsubtractor(first,second);   
 
 
 				ans.negative=first.negative;
@@ -224,11 +224,7 @@ public class BigInteger {
 		}
 
 
-		/*if(zerocheck(ans)==true) {
-			ans.negative=false;
-			ans.front=null;
-			ans.numDigits=0;
-		}*/
+		
 
 
 		String tempor=ans.toString();
@@ -297,11 +293,11 @@ public class BigInteger {
 				bottnum=0;
 			}
 
-			// this is throwing the exceptions
+			
 			if(borrow) {
 
 				if(topnum!=0 ) {
-					topnum=topnum-1;  // this is whats causing problems
+					topnum=topnum-1;  
 					borrow=false;
 				}else if(topnum==0 ) {
 					topnum=topnum+9;
@@ -316,16 +312,14 @@ public class BigInteger {
 			}
 
 
-			if(top!=null && top!=null ) {  // added an extra statement'
+			if(top!=null && top!=null ) {  
 				diff=topnum-bottnum;
 			}else if(first.front!=null &&second.front==null ) {
 				diff=topnum;
 			}
 
 
-			//if(diff==0 && top.next==null) {  //reevaluate
-			//break;
-			//}
+			
 
 
 			digit=new DigitNode(diff,null);
@@ -391,12 +385,12 @@ public class BigInteger {
 
 		boolean onebig=true;
 
-		//this line is a possible solution
+	
 		DigitNode one=first.front;
 
 		DigitNode two=second.front;
 
-		//new traversal nodes 
+	 
 
 		DigitNode onetrav=first.front;
 
@@ -422,7 +416,7 @@ public class BigInteger {
 
 		onetrav=one;
 
-		twotrav=two;  //recheck this method helper
+		twotrav=two;  
 
 
 		return onebig;
@@ -451,7 +445,7 @@ public class BigInteger {
 
 		while(onetrav!=null || twotrav!=null) {
 			if(onetrav!=null && twotrav!=null) {
-				// both are positive
+			
 
 				sum=carry+(onetrav.digit)+(twotrav.digit); 
 
@@ -477,7 +471,7 @@ public class BigInteger {
 				}
 
 
-			}else if(onetrav==null && twotrav!=null) {     // figure out the error with 786+465
+			}else if(onetrav==null && twotrav!=null) {     
 
 				sum=carry+twotrav.digit+0;
 
@@ -536,7 +530,7 @@ public class BigInteger {
 
 
 		ans.numDigits=counter;
-		//System.out.println(ans.numDigits +" "+ ans.negative);
+		
 
 
 		return ans;
@@ -693,7 +687,7 @@ public class BigInteger {
 					top=top.next;
 				}
 
-				if(remainder2>0) {  // this may be causing your problems
+				if(remainder2>0) {  
 					pointer2.next=new DigitNode(remainder2,null);
 
 				}
